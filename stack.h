@@ -37,6 +37,5 @@ Stack*  stack_pop(Stack *stk,StackResult *res);
 Stack*  stack_peek(Stack *stk,StackResult *res);
 uint8_t  isMatchingPair(char character1, char character2);
 uint8_t areBracketsBalanced(char exp[]);
-Stack*  stack_enqueue(Stack *stk1,float ele);
-Stack* stack_dequeue(Stack *stk2);
+
 #endif // STACK_H_INCLUDED
