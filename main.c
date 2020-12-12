@@ -87,22 +87,23 @@ stk=stack_pop(stk,&res);
 assert(res.status==STACK_OK  && res.data==288);
 }
 
-/*void test_balance(){
+void test_balance(){
+
+assert(areBracketsBalanced("{()}"));
+
+}
 
 
-assert(areParenthesBalanced(exp)==1);
-}*/
 
 
 int main()
 
 {
-    //test_empty_stack();
-    //test_full_stack();
-    //test_stack();
-    //char exp[]="6523+8*+3+*";
-    //test_post_fix(exp);
-    char exp[]="{()}";
-    assert(areParenthesBalanced(exp)==1);
+    test_empty_stack();
+    test_full_stack();
+    test_stack();
+    char exp[]="6523+8*+3+*";
+    test_post_fix(exp);
+    void test_balance();
     return 0;
 }

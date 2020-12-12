@@ -25,6 +25,8 @@ uint8_t status;
 
 };
 
+
+
 /*Public interfaces*/
 
 Stack   stack_new(uint32_t size);
@@ -33,6 +35,8 @@ uint8_t stack_empty(const Stack *stk);
 Stack*  stack_push(Stack *stk,float ele,StackResult *res);
 Stack*  stack_pop(Stack *stk,StackResult *res);
 Stack*  stack_peek(Stack *stk,StackResult *res);
-int8_t  isMatchingPair(char character1, char character2);
-int8_t  areParenthesBalanced(char* exp);
+uint8_t  isMatchingPair(char character1, char character2);
+uint8_t areBracketsBalanced(char exp[]);
+Stack*  stack_enqueue(Stack *stk1,float ele);
+Stack* stack_dequeue(Stack *stk2);
 #endif // STACK_H_INCLUDED

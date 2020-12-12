@@ -60,7 +60,7 @@ return stk;
 
 
 //Check balancing of symbols (like ‘{‘, ‘(‘, ‘[‘ ) and their order using stack.
-int8_t  isMatchingPair(char character1, char character2)
+uint8_t isMatchingPair(char character1, char character2)
 {
     if (character1 == '(' && character2 == ')')
         return 1;
@@ -73,35 +73,51 @@ int8_t  isMatchingPair(char character1, char character2)
 }
 
 
-int8_t areParenthesBalanced(char* exp){
-//int n=strlen(st);
-Stack s1=stack_new(20);
-Stack *stk=&s1;
-StackResult res;
-int i;
+uint8_t areBracketsBalanced(char exp[])
+{
+    int i = 0;
 
-for (i=0;exp[i];++i){
-      if (exp[i] == '{' || exp[i] == '(' || exp[i] == '[')
-           stk=stack_push(stk,exp[i],&res);
+    // Declare an empty character stack
+    Stack s1 = stack_new(20);
+    Stack *stack = &s1;
+    StackResult res;
+    assert (stack_empty(stack));
 
-      else if(exp[i]=='}' || exp[i]==')'  ||  exp[i]==']')
-      {
-          stk=stack_pop(stk,&res);
-          if((stk==NULL) || !isMatchingPair(res.data,exp[i])){
-             return 0;
-             }
-      }
+    // Traverse the given expression to check matching
+    // brackets
+    while (exp[i])
+    {
 
+        if (exp[i] == '{' || exp[i] == '(' || exp[i] == '['){
+             stack = stack_push(stack, exp[i],&res);
+        }
 
+        if (exp[i] == '}' || exp[i] == ')' || exp[i] == ']') {
+
+        if (stack ->top == -1)
+                return 0;
+
+        else {
+                stack = stack_pop(stack,&res);
+                if (!isMatchingPair(res.data, exp[i]))
+                    return 0;
+            }
+        }
+        i++;
+        }
+
+    if (stack->top == -1){
+         return 1; // balanced
+    }
+    else{
+        return 0; // not balanced
+    }
 
 }
-if(stk==NULL){
-  return 1;
-}
-else{
 
-  return 0;
-}
 
-}
+
+
+
+
 
